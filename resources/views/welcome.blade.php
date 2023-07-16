@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="{{ asset('node_modules/jquery/dist/jquery.min.js') }}"></script>
+
 
         <title>Laravel</title>
 
