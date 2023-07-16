@@ -5,6 +5,8 @@
         calendario
     </div>
 </div>
+
+
 <!-- Botón para abrir el modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#evento">
   Abrir Modal
@@ -57,8 +59,10 @@
 
       </div>
       <div class="modal-footer">
+      <button type="button" class="btn btn-success" id="btnGuardar">Guardar</button>
+      <button type="button" class="btn btn-warning" id="btnModificar">Modificar</button>
+      <button type="button" class="btn btn-danger" id="btnEliminar">Eliminar</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar cambios</button>
       </div>
     </div>
   </div>
@@ -66,3 +70,27 @@
 
 
 @endsection
+
+@section('scripts')
+@parent
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script>
+  // Asignar eventos a los botones
+  document.getElementById('btnGuardar').addEventListener('click', function() {
+    // Lógica para el botón Guardar
+    console.log('Guardar clickeado');
+  });
+
+  document.getElementById('btnModificar').addEventListener('click', function() {
+    // Lógica para el botón Modificar
+    console.log('Modificar clickeado');
+  });
+
+  document.getElementById('btnEliminar').addEventListener('click', function() {
+    // Lógica para el botón Eliminar
+    console.log('Eliminar clickeado');
+  });
+</script>
+@endsection
+

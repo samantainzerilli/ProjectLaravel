@@ -1,5 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', function() {
+
+  let formulario=document.querySelector("form");
+
     var calendarEl = document.getElementById('agenda');
     var calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
@@ -17,9 +20,27 @@ document.addEventListener('DOMContentLoaded', function() {
         day: 'Día'
       },
 
-      dateClick:function(info){
-        $("#evento").modal("show");
+      dateClick: function(info) {
+        var modal = document.getElementById('evento');
+        if (modal) {
+          modal.classList.add('show');
+          modal.style.display = 'block';
+          modal.style.opacity = 1;
+        }
       }
+      
     });
     calendar.render();
+    
+    document.getElementById("btnGuardar").addEventListener("click",function(){
+      const datos=new FormData(formulario);
+      console.log(datos);
+      axios.post("http://127.0.0.1:8000/evento/agregar",datos).
+      then(
+        (respuesta)=>{
+          $("#evento").modal("hide");
+        }
+      )
+    })
+
   });
