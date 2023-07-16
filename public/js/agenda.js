@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('agenda');
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -14,6 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
         month: 'Mes',
         week: 'Semana',
         day: 'Día'
+      },
+
+      dateClick:function(info){
+        $("#evento").modal("show");
       }
     });
     calendar.render();
