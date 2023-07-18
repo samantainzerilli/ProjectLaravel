@@ -12,8 +12,12 @@ class EventoController extends Controller
      */
     public function index()
     {
-        return view('evento.index');
+        $agregarEventoURL = url('/evento/agregar');
+        return view('evento.index')->with('agregarEventoURL', $agregarEventoURL);
     }
+    
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -28,10 +32,18 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        request()->validate(Evento::$rules);
-        $evento=Evento::create($request->all());
+        $request->validate([
+            'title' => 'required',
+            'descripcion' => 'required',
+            'start' => 'required',
+            'end' => 'required',
+        ]);
+    
+        Evento::create($request->all());
+    
+        return redirect()->back()->with('success', 'Evento creado exitosamente');
     }
+    
 
     /**
      * Display the specified resource.

@@ -18,8 +18,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::post('/evento/agregar', [App\Http\Controllers\EventoController::class, 'store'])->name('evento.agregar');
 
 Route::get('/evento', [App\Http\Controllers\EventoController::class, 'index']);
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
